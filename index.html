@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bharat Sarkari Yojana AI</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f3f6fb;
+    color: #172033;
+}
+
+header {
+    background: linear-gradient(120deg,#075e46,#079b70);
+    color: white;
+    padding: 25px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+header button {
+    background: white;
+    color: #075e46;
+    border: none;
+    padding: 11px 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 55px 15px;
+    background: linear-gradient(120deg,#e2fff2,#eaf2ff);
+}
+
+.hero h1 {
+    font-size: 34px;
+    margin-bottom: 15px;
+    color: #075e46;
+}
+
+.hero p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.search {
+    max-width: 650px;
+    margin: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.search input {
+    flex: 1;
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    font-size: 15px;
+}
+
+.search button {
+    padding: 14px 20px;
+    background: #087c59;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 35px auto;
+    padding: 0 15px;
+}
+
+.section-title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(145px,1fr));
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.category {
+    background: white;
+    padding: 22px 10px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000009;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.category:hover {
+    transform: translateY(-4px);
+    background: #e6fff4;
+}
+
+.category span {
+    font-size: 28px;
+}
+
+.category h3 {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.schemes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(245px,1fr));
+    gap: 18px;
+}
+
+.scheme {
+    background: white;
+    border-radius: 13px;
+    padding: 22px;
+    box-shadow: 0 3px 15px #0000000c;
+    border-top: 4px solid #07835e;
+}
+
+.scheme h3 {
+    color: #087451;
+    margin-bottom: 12px;
+}
+
+.scheme p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.scheme button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    background: #087c59;
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.ai-section {
+    background: white;
+    padding: 25px;
+    margin-top: 45px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px #0000000c;
+}
+
+.ai-section h2 {
+    color: #087451;
+    margin-bottom: 12px;
+}
+
+.settings {
+    background: #f1f8f5;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.settings input, .settings select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+}
+
+.chat-box {
+    height: 350px;
+    overflow-y: auto;
+    padding: 15px;
+    background: #f7f9fc;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.message {
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    max-width: 90%;
+    white-space: pre-wrap;
+    line-height: 1.7;
+}
+
+.user {
+    background: #d9f8e9;
+    margin-left: auto;
+}
+
+.bot {
+    background: #e7ecf5;
+}
+
+.chat-input {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.chat-input button {
+    padding: 12px 20px;
+    border: none;
+    background: #087c59;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+.official {
+    text-align: center;
+    margin: 40px 0;
+    padding: 25px;
+    background: #e5f8ef;
+    border-radius: 12px;
+}
+
+.official a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 13px 20px;
+    background: #087c59;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #123c31;
+    color: white;
+    line-height: 1.8;
+}
+
+@media(max-width:600px) {
+    .hero h1 { font-size: 25px; }
+    .search { flex-direction: column; }
+    .chat-input button { padding: 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🇮🇳 Bharat Yojana AI</div>
+    <button onclick="document.getElementById('ai').scrollIntoView({behavior:'smooth'})">
+        AI से पूछें
+    </button>
+</header>
+
+<section class="hero">
+    <h1>भारत सरकार की योजनाएँ एक जगह</h1>
+    <p>अपनी जरूरत के अनुसार सरकारी योजनाएँ खोजें और AI से हिंदी में जानकारी पाएँ।</p>
+
+    <div class="search">
+        <input id="search" placeholder="योजना का नाम या विषय लिखें...">
+        <button onclick="searchSchemes()">खोजें</button>
+    </div>
+</section>
+
+<div class="container">
+
+    <h2 class="section-title">योजना की श्रेणियाँ</h2>
+
+    <div class="categories">
+        <div class="category" onclick="ask('किसानों के लिए सरकारी योजनाएँ बताओ')">
+            <span>🌾</span>
+            <h3>किसान योजनाएँ</h3>
+        </div>
+
+        <div class="category" onclick="ask('विद्यार्थियों के लिए सरकारी योजनाएँ बताओ')">
+            <span>🎓</span>
+            <h3>शिक्षा योजनाएँ</h3>
+        </div>
+
+        <div class="category" onclick="ask('महिलाओं के लिए सरकारी योजनाएँ बताओ')">
+            <span>👩</span>
+            <h3>महिला योजनाएँ</h3>
+        </div>
+
+        <div class="category" onclick="ask('युवाओं के लिए सरकारी योजनाएँ बताओ')">
+            <span>💼</span>
+            <h3>रोजगार योजनाएँ</h3>
+        </div>
+
+        <div class="category" onclick="ask('स्वास्थ्य संबंधी सरकारी योजनाएँ बताओ')">
+            <span>🏥</span>
+            <h3>स्वास्थ्य योजनाएँ</h3>
+        </div>
+
+        <div class="category" onclick="ask('गरीब परिवारों के लिए योजनाएँ बताओ')">
+            <span>🏠</span>
+            <h3>गरीब परिवार</h3>
+        </div>
+
+        <div class="category" onclick="ask('व्यापार और बिजनेस के लिए सरकारी योजनाएँ बताओ')">
+            <span>🏢</span>
+            <h3>व्यापार योजनाएँ</h3>
+        </div>
+
+        <div class="category" onclick="ask('बुजुर्गों के लिए सरकारी योजनाएँ बताओ')">
+            <span>👴</span>
+            <h3>वरिष्ठ नागरिक</h3>
+        </div>
+    </div>
+
+    <h2 class="section-title">प्रमुख सरकारी योजनाएँ</h2>
+
+    <div class="schemes" id="schemeList">
+
+        <div class="scheme" data-name="प्रधानमंत्री किसान सम्मान निधि किसान">
+            <h3>🌾 प्रधानमंत्री किसान सम्मान निधि</h3>
+            <p>पात्र किसान परिवारों को आर्थिक सहायता प्रदान करने वाली केंद्र सरकार की योजना।</p>
+            <button onclick="ask('प्रधानमंत्री किसान सम्मान निधि योजना की पात्रता, लाभ और आवेदन प्रक्रिया बताओ')">पूरी जानकारी</button>
+        </div>
+
+        <div class="scheme" data-name="आयुष्मान भारत स्वास्थ्य">
+            <h3>🏥 आयुष्मान भारत PM-JAY</h3>
+            <p>पात्र परिवारों को सूचीबद्ध अस्पतालों में स्वास्थ्य सेवाओं के लिए सहायता।</p>
+            <button onclick="ask('आयुष्मान भारत योजना की पात्रता और लाभ बताओ')">पूरी जानकारी</button>
+        </div>
+
+        <div class="scheme" data-name="प्रधानमंत्री आवास योजना घर">
+            <h3>🏠 प्रधानमंत्री आवास योजना</h3>
+            <p>पात्र परिवारों को आवास उपलब्ध कराने के उद्देश्य से चलाई जाने वाली योजना।</p>
+            <button onclick="ask('प्रधानमंत्री आवास योजना ग्रामीण और शहरी की जानकारी दो')">पूरी जानकारी</button>
+        </div>
+
+        <div class="scheme" data-name="सुकन्या समृद्धि महिला बालिका">
+            <h3>👧 सुकन्या समृद्धि योजना</h3>
+            <p>बालिकाओं के भविष्य के लिए बचत को प्रोत्साहित करने वाली सरकारी योजना।</p>
+            <button onclick="ask('सुकन्या समृद्धि योजना के नियम और लाभ बताओ')">पूरी जानकारी</button>
+        </div>
+
+        <div class="scheme" data-name="प्रधानमंत्री उज्ज्वला योजना गैस">
+            <h3>🔥 प्रधानमंत्री उज्ज्वला योजना</h3>
+            <p>पात्र महिलाओं को LPG कनेक्शन उपलब्ध कराने से संबंधित योजना।</p>
+            <button onclick="ask('प्रधानमंत्री उज्ज्वला योजना की पात्रता और आवेदन बताओ')">पूरी जानकारी</button>
+        </div>
+
+        <div class="scheme" data-name="पीएम विश्वकर्मा कारीगर">
+            <h3>🔨 पीएम विश्वकर्मा योजना</h3>
+            <p>पारंपरिक कारीगरों और शिल्पकारों को प्रशिक्षण और अन्य सहायता।</p>
+            <button onclick="ask('पीएम विश्वकर्मा योजना के लाभ और पात्रता बताओ')">पूरी जानकारी</button>
+        </div>
+
+        <div class="scheme" data-name="प्रधानमंत्री मुद्रा योजना व्यापार">
+            <h3>🏢 प्रधानमंत्री मुद्रा योजना</h3>
+            <p>सूक्ष्म उद्यमों के लिए वित्तीय सहायता और ऋण से जुड़ी योजना।</p>
+            <button onclick="ask('प्रधानमंत्री मुद्रा योजना की जानकारी बताओ')">पूरी जानकारी</button>
+        </div>
+
+        <div class="scheme" data-name="राष्ट्रीय छात्रवृत्ति शिक्षा">
+            <h3>🎓 राष्ट्रीय छात्रवृत्ति पोर्टल</h3>
+            <p>विभिन्न पात्र विद्यार्थियों के लिए छात्रवृत्ति योजनाओं की जानकारी।</p>
+            <button onclick="ask('विद्यार्थियों के लिए राष्ट्रीय छात्रवृत्ति योजनाओं की जानकारी दो')">पूरी जानकारी</button>
+        </div>
+
+    </div>
+
+    <div class="official">
+        <h2>सरकारी योजनाओं का आधिकारिक पोर्टल</h2>
+        <p>केंद्र और सभी राज्यों की योजनाओं की विस्तृत सूची यहाँ देखें।</p>
+        <a href="https://www.myscheme.gov.in/" target="_blank" rel="noopener">
+            MyScheme Official Website
+        </a>
+    </div>
+
+    <section class="ai-section" id="ai">
+
+        <h2>🤖 Bharat Yojana AI Assistant</h2>
+        <p>सरकारी योजनाओं के बारे में अपना सवाल हिंदी में पूछें।</p>
+
+        <div class="settings">
+            <label>Groq API Key डालें:</label>
+            <input type="password" id="apiKey" placeholder="gsk_...">
+
+            <label style="display:block;margin-top:12px;">
+                <input type="checkbox" id="showKey" onchange="toggleKey()">
+                API Key दिखाएँ
+            </label>
+
+            <label style="display:block;margin-top:12px;">AI Model चुनें:</label>
+            <select id="model">
+                <option value="openai/gpt-oss-120b">GPT OSS 120B (Recommended)</option>
+                <option value="openai/gpt-oss-20b">GPT OSS 20B</option>
+                <option value="llama-3.3-70b-versatile">Llama 3.3 70B</option>
+            </select>
+        </div>
+
+        <div class="chat-box" id="chatBox">
+            <div class="message bot">
+                नमस्ते! 🙏 मैं Bharat Yojana AI हूँ।
+
+                आप मुझसे भारत सरकार की योजनाओं, पात्रता, लाभ और आवेदन प्रक्रिया के बारे में सवाल पूछ सकते हैं।
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input id="question" placeholder="अपना सवाल यहाँ लिखें..."
+            onkeydown="if(event.key==='Enter') sendMessage()">
+
+            <button id="sendBtn" onclick="sendMessage()">भेजें</button>
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    <h3>🇮🇳 Bharat Sarkari Yojana AI</h3>
+    <p>सरकारी योजनाओं की जानकारी अब आसान हिंदी में।</p>
+    <p>यह एक स्वतंत्र AI सूचना वेबसाइट है, सरकारी वेबसाइट नहीं।</p>
+</footer>
+
+<script>
+
+const API_URL = "https://api.groq.com/openai/v1/chat/completions";
+
+let history = [];
+
+function toggleKey() {
+    document.getElementById("apiKey").type =
+    document.getElementById("showKey").checked ? "text" : "password";
+}
+
+function addMessage(text, type) {
+    const box = document.getElementById("chatBox");
+    const div = document.createElement("div");
+
+    div.className = "message " + type;
+    div.textContent = text;
+
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+
+    return div;
+}
+
+function ask(question) {
+    document.getElementById("question").value = question;
+    document.getElementById("ai").scrollIntoView({behavior:"smooth"});
+    sendMessage();
+}
+
+function searchSchemes() {
+    const query = document.getElementById("search").value.trim().toLowerCase();
+
+    if (!query) return;
+
+    let found = 0;
+
+    document.querySelectorAll(".scheme").forEach(card => {
+        const name = card.dataset.name.toLowerCase();
+        const match = name.includes(query) ||
+                      card.innerText.toLowerCase().includes(query);
+
+        card.style.display = match ? "block" : "none";
+        if (match) found++;
+    });
+
+    if (found === 0) {
+        ask("मुझे इस विषय से संबंधित भारत सरकार की योजनाएँ बताओ: " + query);
+    }
+}
+
+async function sendMessage() {
+
+    const input = document.getElementById("question");
+    const key = document.getElementById("apiKey").value.trim();
+    const model = document.getElementById("model").value;
+    const btn = document.getElementById("sendBtn");
+
+    const question = input.value.trim();
+
+    if (!question) return;
+
+    if (!key) {
+        alert("कृपया पहले Groq API Key डालें।");
+        return;
+    }
+
+    addMessage(question, "user");
+    input.value = "";
+    btn.disabled = true;
+    btn.textContent = "सोच रहा हूँ...";
+
+    const loading = addMessage("जानकारी खोजी जा रही है...", "bot");
+
+    const systemPrompt = `
+आप Bharat Sarkari Yojana AI हैं।
+
+आपका मुख्य काम भारत की सरकारी योजनाओं की जानकारी देना है।
+
+नियम:
+
+1. हमेशा सरल और स्पष्ट हिंदी में जवाब दें।
+2. केंद्र और राज्य सरकार की योजनाओं के बारे में जानकारी दें।
+3. योजना का नाम, उद्देश्य, लाभ, पात्रता, आवश्यक दस्तावेज और आवेदन प्रक्रिया समझाएँ।
+4. विद्यार्थी, किसान, महिलाएँ, बुजुर्ग, गरीब परिवार और युवाओं की योजनाओं में मदद करें।
+5. यदि राज्य का नाम जरूरी हो तो उपयोगकर्ता से राज्य पूछें।
+6. किसी भी योजना की अपुष्ट राशि, अंतिम तारीख या पात्रता को तथ्य की तरह न बताएं।
+7. जानकारी उपलब्ध न होने पर साफ बताएं।
+8. उपयोगकर्ता को आधिकारिक वेबसाइट पर जानकारी सत्यापित करने की सलाह दें।
+9. कोई भी झूठा आवेदन लिंक न बनाएं।
+10. आप आधिकारिक सरकारी विभाग नहीं हैं।
+11. उपयोगकर्ता की भाषा हिंदी हो तो हिंदी में ही जवाब दें।
+
+महत्वपूर्ण:
+आपके पास अपने आप लाइव सरकारी डेटाबेस उपलब्ध नहीं है।
+ताजा जानकारी के लिए myscheme.gov.in और संबंधित सरकारी वेबसाइट देखने की सलाह दें।
+`;
+
+    try {
+
+        const messages = [
+            {role:"system", content:systemPrompt},
+            ...history.slice(-10),
+            {role:"user", content:question}
+        ];
+
+        const response = await fetch(API_URL, {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":"Bearer " + key
+            },
+            body:JSON.stringify({
+                model:model,
+                messages:messages,
+                temperature:0.4,
+                max_completion_tokens:2000
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error?.message || "API Error: " + response.status);
+        }
+
+        const answer = data.choices?.[0]?.message?.content;
+
+        if (!answer) throw new Error("AI से खाली जवाब मिला।");
+
+        loading.textContent = answer;
+
+        history.push(
+            {role:"user",content:question},
+            {role:"assistant",content:answer}
+        );
+
+    } catch(error) {
+
+        loading.textContent = "त्रुटि: " + error.message +
+        "\n\nअपनी API Key, इंटरनेट और चुने गए मॉडल की उपलब्धता जाँचें।";
+
+    } finally {
+
+        btn.disabled = false;
+        btn.textContent = "भेजें";
+    }
+}
+
+</script>
+
+</body>
+</html>
